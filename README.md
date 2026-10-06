@@ -148,21 +148,17 @@ The longer-term goal is to model the entire pre-earnings market history, rather 
 
 The richer market representation can be structured as (sugestted by ChatGPT):
 
-30-Day Pre-Earnings History
-             ↓
-      Intraday Features
-             ↓
-       Time-Series Tensor
-             ↓
-      Temporal Encoder
-             │
-      ┌──────┼──────┐
-      │      │      │
-    1D CNN  LSTM  Transformer
-      │      │      │
-      └──────┼──────┘
-             ↓
-      Market Embedding
+        30-Day Pre-Earnings History
+                ↓
+        Intraday Features
+                ↓
+        Time-Series Tensor
+                ↓
+        Temporal Encoder
+                ↓
+        1D CNN / LSTM / Transformer
+                ↓
+        Market Embedding
 
 Candidate architectures:
 
@@ -174,11 +170,11 @@ Temporal Transformer
 # 6. Multimodal Fusion
 Once the two modalities have independent representations, there are several candidate fusion strategies we can experiment. The plan is to try the following three strategies step by step:
 
-Concatenation
-      ↓
-Gated Fusion
-      ↓
-Cross-modal Attention 
+    Concatenation
+        ↓
+    Gated Fusion
+        ↓
+    Cross-modal Attention 
 
 # 7. Experimental Roadmap
 ## Model 0 — Simple Multimodal Baseline
