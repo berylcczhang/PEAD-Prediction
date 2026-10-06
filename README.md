@@ -26,25 +26,13 @@ The final event-level dataset contains one row per earnings event.
 
 Conceptually:
 
-event_id
-symbol
-date
+"event_id", "symbol", "date"
 
-Market features
-    ├── pre_volatility
-    ├── pre_momentum
-    └── pre_avg_volume
+Market features: "pre_volatility", "pre_momentum", "pre_avg_volume", "earnings_gap"
 
-Transcript representation
-    ├── embedding_0
-    ├── embedding_1
-    └── ...
+Transcript representation: "embedding_0", "embedding_1" ...
 
-Targets
-    ├── return_3d
-    ├── return_7d
-    ├── label_3d
-    └── label_7d
+Targets: "return_3d", "return_7d", "label_3d", "label_7d"
 
 # 2. Earnings Event Definition
 Announcements occurring during regular market hours are excluded from the main modeling dataset.
@@ -74,11 +62,11 @@ return_7d
 
 The current baseline treats every transcript chunk equally:
 
-Chunk 1 ──► CLS ──┐
-Chunk 2 ──► CLS ──┤
-Chunk 3 ──► CLS ──┼──► Mean Pooling ──► 768-D embedding
-  ...             │
-Chunk N ──► CLS ──┘
+    Chunk 1 ──► CLS
+    Chunk 2 ──► CLS
+    Chunk 3 ──► CLS ──► Mean Pooling ──► 768-D embedding
+    ...
+    Chunk N ──► CLS
 
 ### Advantages
 
@@ -99,12 +87,12 @@ The next text representation will learn which transcript chunks are more importa
 Chunk Embeddings
        ↓
  Attention Mechanism
-       │
-       ├── Chunk 1 → 0.05
-       ├── Chunk 2 → 0.12
-       ├── Chunk 3 → 0.41
-       ├── Chunk 4 → 0.08
-       └── ...
+       ↓
+    Chunk 1 → 0.05
+    Chunk 2 → 0.12
+    Chunk 3 → 0.41
+    Chunk 4 → 0.08
+    ...
        ↓
 Weighted Transcript Embedding
 
@@ -122,23 +110,11 @@ This provides a natural transition from fixed feature engineering to learned rep
 
 The market modality begins with simple pre-event summary statistics.
 
-## Current baseline features:
+## Current baseline market features:
 
-pre_volatility
-pre_momentum
-pre_avg_volume
-earnings_gap
+"pre_volatility", "pre_momentum", "pre_avg_volume", "earnings_gap"
 
-These provide an interpretable description of the stock's behavior before earnings.
-
-30-Day Market History
-        │
-        ├── Volatility
-        ├── Momentum
-        ├── Average volume
-        └── Percentage gap before & after the event
-
-These features are retained as a baseline even after richer market representations are introduced.
+These provide an interpretable description of the stock's behavior before earnings. These features are calcualted across 30-day window from market history data.
 
 ## Richer Market Representation
 
