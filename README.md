@@ -84,17 +84,17 @@ For example, management guidance or forward-looking statements may be more infor
 
 The next text representation will learn which transcript chunks are more important.
 
-Chunk Embeddings
-       ↓
- Attention Mechanism
-       ↓
-    Chunk 1 → 0.05
-    Chunk 2 → 0.12
-    Chunk 3 → 0.41
-    Chunk 4 → 0.08
-    ...
-       ↓
-Weighted Transcript Embedding
+        Chunk Embeddings
+            ↓
+        Attention Mechanism
+            ↓
+        Chunk 1 → 0.05
+        Chunk 2 → 0.12
+        Chunk 3 → 0.41
+        Chunk 4 → 0.08
+        ...
+            ↓
+        Weighted Transcript Embedding
 
 Instead of assuming:
 
