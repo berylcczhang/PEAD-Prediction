@@ -163,7 +163,7 @@ Once the two modalities have independent representations, there are several cand
                             ├──► Concatenate ──► Logistic Regression
         Market Features ────┘
 
-Purpose: Serve as a model baseline
+Purpose: Serve as a model baseline (reduce to 5 PC)
 
 ## Model 1 - Neural Market Encoder
 
@@ -174,13 +174,12 @@ Purpose: Serve as a model baseline
                PCA         
                 ↓
                 │───────────► Fusion ──► MLP ──► Prediction
-                ▲
                 ↑
         Market Embedding      
                 ↑
         Temporal Encoder   
                 ↑
-        Market Time Series
+        Market Time Series (increasing , trading volumes,  industry market )
 
 Purpose: Replace manually summarized market features with a learned temporal representation.
 
